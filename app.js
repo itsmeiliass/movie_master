@@ -1,3 +1,4 @@
+// search for movies using omdb api with a movie title given from user
 async function searchMovies() {
     const query = document.getElementById('search-input').value;
     const resultsDiv = document.getElementById('results');
@@ -39,6 +40,7 @@ function showMovieDetails(imdbID) {
     window.location.href = `/movie-details.html?imdbID=${imdbID}`;
 }
 
+// display the movies searched for by title 
 async function displayMovieDetails() {
     const imdbID = new URLSearchParams(window.location.search).get('imdbID');
     const posterImg = document.getElementById('poster');
@@ -82,7 +84,7 @@ async function displayMovieDetails() {
 // Call the function to display movie details when the page loads
 window.onload = displayMovieDetails;
 
-
+// fetch the trailer using youtube api , search by Imdbid
 async function fetchTrailer() {
     try {
         // Extract IMDb ID from URL
