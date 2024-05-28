@@ -52,7 +52,7 @@ async function displayMovieDetails() {
             posterImg.src = movie.Poster;
             movieDetailsDiv.innerHTML = `
                 <h2>${movie.Title} (${movie.Year})</h2>
-                <strong><a href="trailer.html?imdbID=${imdbID}" id="trailer-link">Watch Trailer</a></strong>
+                <strong><a href="/html/trailer.html?imdbID=${imdbID}" id="trailer-link">Watch Trailer</a></strong>
                 <p><strong>Type :  </strong> ${movie.Type}</p>
                 <p><strong>Rated :  </strong> ${movie.Rated}</p>
                 <p><strong>Released :  </strong> ${movie.Released}</p>

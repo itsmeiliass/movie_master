@@ -8,7 +8,13 @@ dotenv.config();
 const app = express();
 const port = 3000;
 
-app.use(express.static(path.join(__dirname)));
+// Serve static files from the 'html', 'css', 'images', and root directory
+app.use('/html', express.static(path.join(__dirname, 'html')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
+app.use(express.static(__dirname)); // Serve JavaScript files from the root directory
+
+
 
 // Search endpoint for omdb api
 app.get('/api/search', async (req, res) => {
@@ -58,12 +64,14 @@ app.get('/api/youtube/trailer', async (req, res) => {
     }
 });
 
+// Serve index.html when root URL is accessed
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    res.sendFile(path.join(__dirname, 'html', 'index.html'));
 });
 
+// Serve movie-details.html when requested
 app.get('/movie-details.html', (req, res) => {
-    res.sendFile(path.join(__dirname, 'movie-details.html'));
+    res.sendFile(path.join(__dirname, 'html','movie-details.html'));
 });
 
 app.listen(port, () => {
