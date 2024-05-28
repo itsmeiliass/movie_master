@@ -1,0 +1,39 @@
+/* Background for the entire body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+/* movie-details-page  */
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.poster-container {
+    flex: 1;
+    text-align: center;
+}
+
+.poster-container img {
+    max-width: 100%;
+}
+
+.details-container {
+    flex: 2;
+    padding: 0 20px;
+}
+
+/* Rating value styles */
+.rating-value {
+    color: #ffcc00; /* Yellow color for IMDb rating and votes */
+}

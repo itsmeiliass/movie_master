@@ -1,0 +1,99 @@
+
+/* Ensure the html and body take the full height */
+html, body {
+    height: 100%;
+    margin: 2%;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Background for the entire body */
+body {
+    background-image: url('../images/background.jpg'); /* Adjusted path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background image stays fixed during scroll */
+}
+
+.movie-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 50px;
+}
+
+@media screen and (min-width: 768px) {
+    .movie-container {
+        grid-template-columns: repeat(4, 1fr); /* Display three movies per row */
+    }
+}
+
+.poster {
+    max-width: 100%; /* Ensure the poster fits within its container */
+    max-height: 100%; /* Ensure the poster fits within its container */
+    width: auto; /* Let the width adjust based on the container */
+    height: auto; /* Let the height adjust based on the container */
+    
+}
+
+.movie {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative; /* Add this line */
+}
+
+.movie-details {
+    position: absolute; /* Add this line */
+    bottom: 0; /* Add this line */
+    left: 0; /* Add this line */
+    width: 100%; /* Add this line */
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+}
+
+
+/* search bar and button  */
+
+.search-container {
+    margin-top: 20px;
+    margin-bottom: 35px; /* Add margin-bottom */
+    text-align: center;
+}
+
+
+.search-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    width: 300px;
+}
+
+.search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* center */
+
+h1 {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.rcmd {
+    text-align: left; /* Align text to the left */
+    margin-left: 20px; /* Add left margin for spacing */
+}

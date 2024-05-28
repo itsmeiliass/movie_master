@@ -1,0 +1,32 @@
+/* Ensure the html and body take the full height */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+/* Background for the entire body */
+body {
+    background-image: url('../images/background.jpg'); /* Adjusted path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensures the background image stays fixed during scroll */
+}
+
+/* Center the trailer container and make it larger */
+#trailer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full height of the viewport */
+    width: 100%;
+}
+
+#trailer-container iframe {
+    width: 80%; /* Adjust the width as needed */
+    height: 80vh; /* Adjust the height as needed */
+    border: none; /* Remove any default border */
+}
