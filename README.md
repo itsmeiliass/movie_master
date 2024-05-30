@@ -69,8 +69,8 @@ This project is a movie search application that allows users to search for movie
 
 Create a `.env` file in the root directory with the following content:
 
-OMDB_API_KEY=your_omdb_api_key
-YOUTUBE_API_KEY=your_youtube_api_key
+OMDB_API_KEY=your_omdb_api_key .
+YOUTUBE_API_KEY=your_youtube_api_key .
 
 
 Replace `your_omdb_api_key` and `your_youtube_api_key` with your actual API keys.
