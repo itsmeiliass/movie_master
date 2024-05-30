@@ -12,7 +12,7 @@ This project is a movie search application that allows users to search for movie
 - [Data Flow](#data-flow)
 
 ## Project Structure
-#structure.txt
+[Structure](./structure.txt)
 
 
 ## Features
