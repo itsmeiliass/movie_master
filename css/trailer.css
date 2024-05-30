@@ -16,6 +16,29 @@ body {
     background-attachment: fixed; /* Ensures the background image stays fixed during scroll */
 }
 
+/* Home icon */
+#home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    border-radius: 50%;
+    padding: 10px;
+    transition: background 0.3s ease;
+}
+
+#home-icon img {
+    width: 30px;
+    height: 30px;
+}
+
+#home-icon:hover {
+    background: rgba(0, 0, 0, 0.8); /* Darker background on hover */
+}
+
 /* Center the trailer container and make it larger */
 #trailer-container {
     display: flex;
@@ -29,4 +52,12 @@ body {
     width: 80%; /* Adjust the width as needed */
     height: 80vh; /* Adjust the height as needed */
     border: none; /* Remove any default border */
+}
+
+/* Style for the "Trailer not found" message */
+#trailer-container p {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: center;
 }

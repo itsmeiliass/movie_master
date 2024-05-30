@@ -84,7 +84,7 @@ async function displayMovieDetails() {
 // Call the function to display movie details when the page loads
 window.onload = displayMovieDetails;
 
-// fetch the trailer using youtube api , search by Imdbid
+//fetch trailer
 async function fetchTrailer() {
     try {
         // Extract IMDb ID from URL
@@ -102,23 +102,24 @@ async function fetchTrailer() {
         // Parse the response as JSON
         const data = await response.json();
 
+        const trailerContainer = document.getElementById('trailer-container');
         if (data.items && data.items.length > 0) {
             // Extract video ID from API response
             const videoId = data.items[0].id.videoId;
 
             // Embed the trailer on the page
-            const trailerContainer = document.getElementById('trailer-container');
             trailerContainer.innerHTML = `
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
             `;
         } else {
-            console.log('Trailer not found');
+            trailerContainer.innerHTML = '<p style="color: red; font-weight: bold;">Trailer not found !!</p>';
         }
     } catch (error) {
         console.error('Error fetching trailer:', error);
+        const trailerContainer = document.getElementById('trailer-container');
+        trailerContainer.innerHTML = '<p>Error fetching trailer</p>';
     }
 }
 
 // Fetch and display the trailer
 fetchTrailer();
-
