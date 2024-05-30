@@ -12,47 +12,7 @@ This project is a movie search application that allows users to search for movie
 - [Data Flow](#data-flow)
 
 ## Project Structure
-project/
-│
-├── server.js # Node.js server setup and API endpoints
-├── .env # Environment variables for API keys
-├── package.json # Project dependencies and scripts
-│
-├── html/ # HTML files
-│ ├── index.html # Main search page
-│ ├── movie-details.html # Movie details page
-│ └── trailer.html # Trailer page
-│
-├── css/ # CSS files for styling
-│ ├── index.css # Styles for the index page
-│ ├── movie-details.css # Styles for the movie details page
-│ └── trailer.css # Styles for the trailer page
-│
-├── images/ # Images used in the project
-│ ├── background.jpg # Background image
-│ └── home-icon.png # Home icon image
-│
-└── app.js # Client-side JavaScriptproject/
-│
-├── server.js # Node.js server setup and API endpoints
-├── .env # Environment variables for API keys
-├── package.json # Project dependencies and scripts
-│
-├── html/ # HTML files
-│ ├── index.html # Main search page
-│ ├── movie-details.html # Movie details page
-│ └── trailer.html # Trailer page
-│
-├── css/ # CSS files for styling
-│ ├── index.css # Styles for the index page
-│ ├── movie-details.css # Styles for the movie details page
-│ └── trailer.css # Styles for the trailer page
-│
-├── images/ # Images used in the project
-│ ├── background.jpg # Background image
-│ └── home-icon.png # Home icon image
-│
-└── app.js # Client-side JavaScript
+#structure.txt
 
 
 ## Features
