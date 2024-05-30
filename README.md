@@ -1,4 +1,4 @@
-# Movie Search and Trailer App
+# Movie Search and Trailer App 
 
 This project is a movie search application that allows users to search for movies, view detailed information about them, and watch trailers. It uses the OMDb API for movie data and the YouTube API for fetching trailers.
 
@@ -12,7 +12,7 @@ This project is a movie search application that allows users to search for movie
 - [Data Flow](#data-flow)
 
 ## Project Structure
-[Structure](./structure.txt)
+- [Structure](./structure.txt)
 
 
 ## Features
