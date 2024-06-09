@@ -14,9 +14,7 @@ app.use('/css', express.static(path.join(__dirname, 'css')));
 app.use('/images', express.static(path.join(__dirname, 'images')));
 app.use(express.static(__dirname)); // Serve JavaScript files from the root directory
 
-
-
-// Search endpoint for omdb api
+// Search endpoint for OMDB API
 app.get('/api/search', async (req, res) => {
     const query = req.query.q;
     const apiKey = process.env.OMDB_API_KEY;
@@ -33,7 +31,7 @@ app.get('/api/search', async (req, res) => {
     }
 });
 
-// Movie details endpoint for omdb api
+// Movie details endpoint for OMDB API
 app.get('/api/movie-details', async (req, res) => {
     const imdbID = req.query.imdbID;
     const apiKey = process.env.OMDB_API_KEY;
@@ -52,12 +50,20 @@ app.get('/api/youtube/trailer', async (req, res) => {
         const { imdbID } = req.query;
         const apiKey = process.env.YOUTUBE_API_KEY;
 
-        const response = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${imdbID}%20trailer&type=video&key=${apiKey}`);
-        
-        // Log the response data to check its structure
-        console.log('YouTube API response:', response.data);
+        const searchQuery = `${imdbID} trailer`;
+        const searchUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${searchQuery}&key=${apiKey}`;
 
-        res.json(response.data);
+        const response = await axios.get(searchUrl);
+
+        if (response.status === 200 && response.data.items) {
+            const items = response.data.items;
+            for (let item of items) {
+                if (item.id && item.id.videoId) {
+                    return res.json({ videoId: item.id.videoId });
+                }
+            }
+        }
+        res.status(404).json({ message: 'Trailer not found' });
     } catch (error) {
         console.error('Error fetching trailer:', error);
         res.status(500).json({ error: 'An error occurred while fetching the trailer' });

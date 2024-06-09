@@ -1,20 +1,21 @@
-// search for movies using omdb api with a movie title given from user
+// Function to search for movies using the OMDB API based on user input
 async function searchMovies() {
-    const query = document.getElementById('search-input').value;
-    const resultsDiv = document.getElementById('results');
+    const query = document.getElementById('search-input').value; // Get the user input from the search box
+    const resultsDiv = document.getElementById('results'); // Get the results container element
 
     try {
+        // Fetch movies from the API with the search query
         const response = await fetch(`/api/search?q=${query}`);
-        const movies = await response.json();
+        const movies = await response.json(); // Parse the response as JSON
 
         if (response.ok) {
-            resultsDiv.innerHTML = '';
-            const movieContainer = document.createElement('div');
+            resultsDiv.innerHTML = ''; // Clear any previous results
+            const movieContainer = document.createElement('div'); // Create a container for the movie results
             movieContainer.classList.add('movie-container');
+
             movies.forEach(movie => {
-                // Check if the movie has a poster image
-                if (movie.Poster !== "N/A") {
-                    const movieElement = document.createElement('div');
+                if (movie.Poster !== "N/A") { // Check if the movie has a poster image
+                    const movieElement = document.createElement('div'); // Create a container for each movie
                     movieElement.classList.add('movie');
                     movieElement.innerHTML = `
                         <div class="poster" onclick="showMovieDetails('${movie.imdbID}')">
@@ -24,15 +25,16 @@ async function searchMovies() {
                             <h3>${movie.Title} (${movie.Year})</h3>
                         </div>
                     `;
-                    movieContainer.appendChild(movieElement);
+                    movieContainer.appendChild(movieElement); // Append each movie to the movie container
                 }
             });
-            resultsDiv.appendChild(movieContainer);
+
+            resultsDiv.appendChild(movieContainer); // Append the movie container to the results div
         } else {
-            resultsDiv.innerHTML = `<p>${movies.message}</p>`;
+            resultsDiv.innerHTML = `<p>${movies.message}</p>`; // Display an error message if the API response is not ok
         }
     } catch (error) {
-        resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`;
+        resultsDiv.innerHTML = `<p>Error: ${error.message}</p>`; // Display an error message if the fetch request fails
     }
 }
 
@@ -40,7 +42,7 @@ function showMovieDetails(imdbID) {
     window.location.href = `/movie-details.html?imdbID=${imdbID}`;
 }
 
-// display the movies searched for by title 
+// Display the movies searched for by title 
 async function displayMovieDetails() {
     const imdbID = new URLSearchParams(window.location.search).get('imdbID');
     const posterImg = document.getElementById('poster');
@@ -70,7 +72,6 @@ async function displayMovieDetails() {
                 <p><strong>Metascore :  </strong> ${movie.Metascore}</p>
                 <p><strong>IMDB Rating :  </strong> <span class="rating-value">${movie.imdbRating}</span></p>
                 <p><strong>IMDB Votes :  </strong> <span class="rating-value">${movie.imdbVotes}</span></p>
-                
             `;
         } else {
             movieDetailsDiv.innerHTML = `<p>${movie.message}</p>`;
@@ -80,11 +81,10 @@ async function displayMovieDetails() {
     }
 }
 
-
 // Call the function to display movie details when the page loads
 window.onload = displayMovieDetails;
 
-//fetch trailer
+// Fetch trailer
 async function fetchTrailer() {
     try {
         // Extract IMDb ID from URL
@@ -103,13 +103,10 @@ async function fetchTrailer() {
         const data = await response.json();
 
         const trailerContainer = document.getElementById('trailer-container');
-        if (data.items && data.items.length > 0) {
-            // Extract video ID from API response
-            const videoId = data.items[0].id.videoId;
-
+        if (data.videoId) {
             // Embed the trailer on the page
             trailerContainer.innerHTML = `
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/${data.videoId}" frameborder="0" allowfullscreen></iframe>
             `;
         } else {
             trailerContainer.innerHTML = '<p style="color: red; font-weight: bold;">Trailer not found !!</p>';
